@@ -1,8 +1,11 @@
 
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 
 import "@/Sass/globals.scss";
+import Header from "@/components/Header/Header";
 
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Portfolio de Thomas",
@@ -16,7 +19,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body>
+      <body className={`bg-blue-600 px-10 py-6 ${inter.className}`}>
+        <Header />
         {children}
       </body>
     </html>
