@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
-import HeaderModal from '@/components/HeaderModal/HeaderModal';
+import HeaderModal from '@/src/components/HeaderModal/HeaderModal';
 
-import SettingsIcon from "@/assets/icons/settings-svgrepo-com.svg";
-import InfoIcon from "@/assets/icons/info.svg";
-import FranceFlag from "@/assets/icons/France_Flag.svg";
-import UKFlag from "@/assets/icons/UK_Flag.svg";
+import SettingsIcon from "@/src/assets/icons/settings-svgrepo-com.svg";
+import InfoIcon from "@/src/assets/icons/info.svg";
+import FranceFlag from "@/src/assets/icons/France_Flag.svg";
+import UKFlag from "@/src/assets/icons/UK_Flag.svg";
 
 const Header = () => {
   const pathname = usePathname();
