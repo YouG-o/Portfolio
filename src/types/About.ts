@@ -1,4 +1,4 @@
-interface Projects {
+export interface About {
     id: number;
     name: string;
     icon: string;
