@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import projectsData from '@/src/data/projects.json';
 import Card from '@/src/components/Card/Card';
@@ -25,9 +26,19 @@ const Projects = () => {
           />
         ))}
       </section>
-      {selectedCardIndex !== null && (
-          <CardDetails card={projectsData[selectedCardIndex]} />
-      )}
+      <AnimatePresence>
+        {selectedCardIndex !== null && (
+          <motion.div
+            initial={{ width: 0, height: 0, opacity: 0 }}
+            animate={{ width: '100%', height: '100%', opacity: 1 }}
+            exit={{ width: 0, height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden bg-white flex-grow mt-4 rounded-2xl p-4"
+          >
+            <CardDetails card={projectsData[selectedCardIndex]} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
