@@ -4,6 +4,6 @@ export interface Projects {
     icon: string;
     description: string;
     stack: string[];
-    github: string;
+    repository?: string;
     pictures?: string[];
 }

@@ -8,8 +8,8 @@ import Header from "@/src/components/Layout/Header/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Portfolio de Thomas",
-  description: "Mon Portfolio personnel",
+  title: "Portfolio",
+  description: "Mon Portfolio",
 };
 
 export default function RootLayout({
