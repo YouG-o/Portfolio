@@ -4,9 +4,15 @@ import Image from 'next/image';
 
 import { Projects } from '../../types/Projects';
 import { About } from '../../types/About';
+import Slider from '../Slider/Slider';
 
 interface CardDetailsProps {
   card: Projects | About;
+}
+
+// Type guard to check if card is of type Projects  by checking if it has a stack property (unique to Projects)
+function isProject(card: Projects | About): card is Projects {
+  return (card as Projects).stack !== undefined;
 }
 
 const CardDetails: React.FC<CardDetailsProps> = ({ card }) => {
@@ -30,7 +36,7 @@ const CardDetails: React.FC<CardDetailsProps> = ({ card }) => {
         </div>
       </div>
       <div className='w-1/2 flex items-center justify-center'>
-        SLIDER
+        {isProject(card) && card.pictures && <Slider pictures={card.pictures} />}
       </div>
     </div>
   );
