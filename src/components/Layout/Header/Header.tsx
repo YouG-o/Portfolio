@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { IoSettingsOutline } from 'react-icons/io5';
+import { IoMdInformationCircleOutline } from "react-icons/io";
 import Link from 'next/link';
 
 import HeaderModal from '@/src/components/HeaderModal/HeaderModal';
 
-import SettingsIcon from "@/src/assets/icons/settings-svgrepo-com.svg";
-import InfoIcon from "@/src/assets/icons/info.svg";
 import FranceFlag from "@/src/assets/icons/France_Flag.svg";
 import UKFlag from "@/src/assets/icons/UK_Flag.svg";
 
@@ -57,7 +57,7 @@ const Header = () => {
         </ul>
         <div id="headerIcons" className='relative flex space-x-10'>
           <div className="relative">
-            <SettingsIcon
+            <IoSettingsOutline
               className="h-6 w-6 cursor-pointer"
               onClick={toggleSettingsModal}
             />
@@ -69,7 +69,7 @@ const Header = () => {
             </HeaderModal>
           </div>
           <div className="relative">
-            <InfoIcon
+            <IoMdInformationCircleOutline
               className="h-6 w-6 cursor-pointer"
               onClick={toggleInfoModal}
             />
