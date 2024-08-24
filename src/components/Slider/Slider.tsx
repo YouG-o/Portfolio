@@ -40,10 +40,10 @@ const Slider: React.FC<SliderProps> = ({ pictures }) => {
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, []);
+    },);
 
     return (
-        <div className="flex items-center justify-center min-h-screen">
+        <div className="flex items-center justify-center">
             <div className="slider m-8 p-4">
                 <Image
                     src={pictures[sliderIndex - 1]}

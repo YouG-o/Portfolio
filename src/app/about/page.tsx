@@ -1,13 +1,22 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import aboutData from '@/src/data/about.json';
 import Card from '@/src/components/Card/Card';
 import CardDetails from '@/src/components/CardDetails/CardDetails';
 
-const Projects = () => {
+const About = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
+  const searchParams = useSearchParams();
+  const openCard = searchParams.get('Card');
+
+  useEffect(() => {
+    if (openCard !== null) {
+      setSelectedCardIndex(parseInt(openCard, 10));
+    }
+  }, [openCard]);
 
   const handleCardClick = (index: number) => {
     setSelectedCardIndex(selectedCardIndex === index ? null : index);
@@ -15,7 +24,7 @@ const Projects = () => {
 
   return (
     <div className="min-h-full h-full py-11 border-3 border-red-500 flex flex-col">
-      <section className='flex gap-4'>
+      <section className="flex gap-4">
         {aboutData.map((project, index) => (
           <Card
             key={index}
@@ -43,4 +52,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default About;
