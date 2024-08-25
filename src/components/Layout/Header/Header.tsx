@@ -8,8 +8,8 @@ import Link from 'next/link';
 
 import HeaderModal from '@/src/components/HeaderModal/HeaderModal';
 
-import FranceFlag from "@/src/assets/icons/France_Flag.svg";
-import UKFlag from "@/src/assets/icons/UK_Flag.svg";
+import FranceFlag from "@/public/icons/France_Flag.svg";
+import UKFlag from "@/public/icons/UK_Flag.svg";
 
 const Header = () => {
   const pathname = usePathname();

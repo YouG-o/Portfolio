@@ -16,10 +16,10 @@ const Projects = () => {
   return (
     <div className="min-h-full h-full py-11 border-3 border-red-500 flex flex-col">
       <section className='flex gap-4'>
-        {projectsData.map((project, index) => (
+        {projectsData.map((card, index) => (
           <Card
             key={index}
-            card={project}
+            card={card}
             isSelected={selectedCardIndex === index}
             onClick={() => handleCardClick(index)}
             disableHover={selectedCardIndex !== null}

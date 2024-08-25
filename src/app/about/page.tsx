@@ -3,11 +3,14 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import aboutData from '@/src/data/about.json';
+import data from '@/src/data/about.json';
+import { About } from '../../types/About';
 import Card from '@/src/components/Card/Card';
 import CardDetails from '@/src/components/CardDetails/CardDetails';
 
-const About = () => {
+const aboutData = data as About[];
+
+const AboutComponent = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
   const searchParams = useSearchParams();
   const openCard = searchParams.get('Card');
@@ -25,10 +28,10 @@ const About = () => {
   return (
     <div className="min-h-full h-full py-11 border-3 border-red-500 flex flex-col">
       <section className="flex gap-4">
-        {aboutData.map((project, index) => (
+        {aboutData.map((card, index) => (
           <Card
             key={index}
-            card={project}
+            card={card}
             isSelected={selectedCardIndex === index}
             onClick={() => handleCardClick(index)}
             disableHover={selectedCardIndex !== null}
@@ -52,4 +55,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutComponent;
