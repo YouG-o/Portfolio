@@ -16,8 +16,20 @@ const config: Config = {
       colors: {
         customBg: "#0864c4",
       },
+      animation: {
+        rotateAnimation: "rotateAnimation 3s ease-in-out infinite",
+      },
+      keyframes: {
+        rotateAnimation: {
+          "0%": { transform: "rotate(0) scale(1)" },
+          "50%": { transform: "rotate(120deg) scale(0)" },
+          "70%": { transform: "rotate(-120deg) scale(0)" },
+          "100%": { transform: "rotate(0) scale(1)" },
+        },
+      },
     },
   },
   plugins: [],
 };
+
 export default config;
