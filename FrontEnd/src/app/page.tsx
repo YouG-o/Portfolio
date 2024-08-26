@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <PageTransition href="/about?Card=0" duration={30}>
       <p className="absolute top-1/4 text-center">Cliquez n&apos;importe où</p>
-      <Image src={PSLogo} width={150} height={150} alt="Playstation Logo" />
+      <Image src={PSLogo} width={300} height={300} alt="Playstation Logo" />
     </PageTransition>
   );
 };
