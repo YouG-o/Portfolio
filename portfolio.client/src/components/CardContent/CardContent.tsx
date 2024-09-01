@@ -6,7 +6,7 @@ import { Projects } from '../../types/Projects';
 import { About } from '../../types/About';
 import Slider from '../Slider/Slider';
 
-interface CardDetailsProps {
+interface CardContentProps {
   card: Projects | About;
 }
 
@@ -15,7 +15,7 @@ function isProject(card: Projects | About): card is Projects {
   return (card as Projects).stack !== undefined;
 }
 
-const CardDetails: React.FC<CardDetailsProps> = ({ card }) => {
+const CardContent: React.FC<CardContentProps> = ({ card }) => {
   return (
     <div className='divBoss flex p-3 min-h-max h-full'>
       <div className='flex flex-col w-1/2 justify-between'>
@@ -42,4 +42,4 @@ const CardDetails: React.FC<CardDetailsProps> = ({ card }) => {
   );
 };
 
-export default CardDetails;
+export default CardContent;

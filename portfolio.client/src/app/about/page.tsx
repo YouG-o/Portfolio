@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import data from '@/src/data/about.json';
 import { About } from '../../types/About';
 import Card from '@/src/components/Card/Card';
-import CardDetails from '@/src/components/CardDetails/CardDetails';
+import CardContent from '@/src/components/CardContent/CardContent';
 
 const aboutData = data as About[];
 
@@ -47,7 +47,7 @@ const AboutComponent = () => {
             transition={{ duration: 0.2 }}
             className="overflow-hidden bg-white flex-grow mt-4 rounded-2xl p-4"
           >
-            <CardDetails card={aboutData[selectedCardIndex]} />
+            <CardContent card={aboutData[selectedCardIndex]} />
           </motion.div>
         )}
       </AnimatePresence>

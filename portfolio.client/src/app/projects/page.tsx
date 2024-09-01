@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import projectsData from '@/src/data/projects.json';
 import Card from '@/src/components/Card/Card';
-import CardDetails from '@/src/components/CardDetails/CardDetails';
+import CardContent from '@/src/components/CardContent/CardContent';
 
 const Projects = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
@@ -35,7 +35,7 @@ const Projects = () => {
             transition={{ duration: 0.2 }}
             className="overflow-hidden bg-white flex-grow mt-4 rounded-2xl p-4"
           >
-            <CardDetails card={projectsData[selectedCardIndex]} />
+            <CardContent card={projectsData[selectedCardIndex]} />
           </motion.div>
         )}
       </AnimatePresence>
