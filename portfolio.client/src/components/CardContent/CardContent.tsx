@@ -10,7 +10,6 @@ interface CardContentProps {
   card: Projects | About;
 }
 
-// Type guard to check if card is of type Projects  by checking if it has a stack property (unique to Projects)
 function isProject(card: Projects | About): card is Projects {
   return (card as Projects).stack !== undefined;
 }
@@ -19,7 +18,12 @@ const CardContent: React.FC<CardContentProps> = ({ card }) => {
   return (
     <div className='divBoss flex p-3 min-h-max h-full'>
       <div className='flex flex-col w-1/2 justify-between'>
-        <h2 className="text-xl font-bold">{card.description}</h2>
+        <div className='h-full flex flex-col items-center'>
+          <p className="text-lg">{card.description}</p>
+          {isProject(card) && card.problems && (
+            <p className="text-lg">{card.problems}</p>
+          )}
+        </div>
         <div className='flex justify-between'>
           {'stack' in card && card.stack && (
             <div className="stack-icons flex gap-2">
