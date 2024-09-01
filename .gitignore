@@ -36,6 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 .vs
+.vscode
 
 # portfolio.client (Next.js)
 portfolio.client/.next/
