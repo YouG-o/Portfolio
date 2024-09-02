@@ -4,5 +4,7 @@ namespace Portfolio.Server.Models
     {
         public string ConnectionURI { get; set; } = null!;
         public string DatabaseName { get; set; } = null!;
+        public string ProjectsCollectionName { get; set; } = null!;
+        public string AboutCollectionName { get; set; } = null!;
     }
 }
