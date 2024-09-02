@@ -14,7 +14,7 @@ namespace Portfolio.Server.Models
         public string Name { get; set; } = null!;
 
         [BsonElement("isFictional")]
-        public bool? IsFictional { get; set; }
+        public bool IsFictional { get; set; }
 
         [BsonElement("icon")]
         public string Icon { get; set; } = null!;
@@ -33,5 +33,8 @@ namespace Portfolio.Server.Models
 
         [BsonElement("pictures")]
         public List<string>? Pictures { get; set; }
+
+        [BsonElement("deploymentUrl")]
+        public string? DeploymentUrl { get; set; }
     }
 }
