@@ -18,7 +18,7 @@ const CardContent: React.FC<CardContentProps> = ({ card }) => {
   return (
     <div className='divBoss flex p-3 min-h-max h-full'>
       <div className='flex flex-col w-1/2 justify-between'>
-        <div className='h-full flex flex-col items-center'>
+        <div className='flex flex-col gap-1'>
           <p className="text-lg">{card.description}</p>
           {isProject(card) && card.problems && (
             <p className="text-lg">{card.problems}</p>

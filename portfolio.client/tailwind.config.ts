@@ -17,9 +17,6 @@ const config: Config = {
       },
       animation: {
         gradient: 'gradient 15s ease infinite',
-        wave: 'wave 10s -3s linear infinite',
-        waveReverse: 'wave 18s linear reverse infinite',
-        waveReverseDelayed: 'wave 20s -1s reverse infinite',
         rotateAnimation: "rotateAnimation 3s ease-in-out infinite",
       },
       keyframes: {
@@ -27,13 +24,6 @@ const config: Config = {
           '0%': { 'background-position': '0% 0%' },
           '50%': { 'background-position': '100% 100%' },
           '100%': { 'background-position': '0% 0%' },
-        },
-        wave: {
-          '2%': { transform: 'translateX(1)' },
-          '25%': { transform: 'translateX(-25%)' },
-          '50%': { transform: 'translateX(-50%)' },
-          '75%': { transform: 'translateX(-25%)' },
-          '100%': { transform: 'translateX(1)' },
         },
         rotateAnimation: {
           "0%": { transform: "rotate(0) scale(1)" },
