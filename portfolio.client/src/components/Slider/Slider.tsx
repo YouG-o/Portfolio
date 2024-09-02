@@ -24,10 +24,10 @@ const Slider: React.FC<SliderProps> = ({ pictures }) => {
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             switch (event.key) {
-                case "37": // left arrow key code
+                case "ArrowLeft": // left arrow key
                     prevImage();
                     break;
-                case "39": // right arrow key code
+                case "ArrowRight": // right arrow key
                     nextImage();
                     break;
                 default:
@@ -40,11 +40,17 @@ const Slider: React.FC<SliderProps> = ({ pictures }) => {
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    },);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // Reset slider index when pictures change
+    useEffect(() => {
+        setSliderIndex(1);
+    }, [pictures]);
 
     return (
         <div className="flex items-center justify-center">
-            <div className="slider m-8 p-4">
+            <div className="slider relative m-8 p-6">
                 <Image
                     src={pictures[sliderIndex - 1]}
                     alt={`Slide ${sliderIndex}`}
@@ -53,19 +59,22 @@ const Slider: React.FC<SliderProps> = ({ pictures }) => {
                     height={800}
                 />
                 {picturesLength > 1 && (
-                    <div className="flex flex-col items-center mt-4">
-                        <div className="flex space-x-4">
-                            <button onClick={prevImage} className="navigation-button prev-button">
-                                <IoIosArrowBack size={32} />
-                            </button>
-                            <button onClick={nextImage} className="navigation-button next-button">
-                                <IoIosArrowForward size={32} />
-                            </button>
+                    <>
+                        <button onClick={prevImage} className="navigation-button prev-button absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
+                            <IoIosArrowBack size={32} />
+                        </button>
+                        <button onClick={nextImage} className="navigation-button next-button absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
+                            <IoIosArrowForward size={32} />
+                        </button>
+                        <div className="points-container mt-2 absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            {pictures.map((_, index) => (
+                                <div
+                                    key={index}
+                                    className={`point w-3 h-3 rounded-full ${sliderIndex === index + 1 ? 'bg-black' : 'bg-gray-400'}`}
+                                ></div>
+                            ))}
                         </div>
-                        <p className="index-info mt-2 text-sm">
-                            {sliderIndex} / {pictures.length}
-                        </p>
-                    </div>
+                    </>
                 )}
             </div>
         </div>
