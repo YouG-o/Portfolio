@@ -1,13 +1,28 @@
+
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import projectsData from '@/src/data/projects.json';
 import Card from '@/src/components/Card/Card';
 import CardContent from '@/src/components/CardContent/CardContent';
+import { getProjects } from '@/src/utils/api';
 
 const Projects = () => {
+  const [projects, setProjects] = useState([]);
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const data = await getProjects();
+        setProjects(data);
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   const handleCardClick = (index: number) => {
     setSelectedCardIndex(selectedCardIndex === index ? null : index);
@@ -16,7 +31,7 @@ const Projects = () => {
   return (
     <div className="min-h-full h-full py-11 border-3 border-red-500 flex flex-col">
       <section className='flex gap-4'>
-        {projectsData.map((card, index) => (
+        {projects.map((card, index) => (
           <Card
             key={index}
             card={card}
@@ -35,7 +50,7 @@ const Projects = () => {
             transition={{ duration: 0.2 }}
             className="overflow-hidden bg-white flex-grow mt-4 rounded-2xl p-4"
           >
-            <CardContent card={projectsData[selectedCardIndex]} />
+            <CardContent card={projects[selectedCardIndex]} />
           </motion.div>
         )}
       </AnimatePresence>
