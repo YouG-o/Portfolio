@@ -8,7 +8,11 @@ namespace Portfolio.Server.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("_id")]
         public string Id { get; set; } = null!;
+
+        [BsonElement("id")]
+        public int CustomId { get; set; }
 
         [BsonElement("name")]
         public string Name { get; set; } = null!;
