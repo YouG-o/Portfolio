@@ -28,13 +28,13 @@ const CardContent: React.FC<CardContentProps> = ({ card }) => {
           {'stack' in card && card.stack && (
             <div className="stack-icons flex gap-2">
               {card.stack.map((tech) => (
-                <Image key={tech} src={`/images/skillicons/${tech}.svg`} title={tech} alt={tech} width={50} height={50} />
+                <Image key={tech} src={`/images/skillicons/${tech}.svg`} title={tech} alt={tech} width={40} height={40} />
               ))}
             </div>
           )}
           {'repository' in card && card.repository && (
             <Link href={card.repository} target="_blank">
-              <Image src="/images/skillicons/github.svg" alt="GitHub repository" width={50} height={50} />
+              <Image src="/images/skillicons/github.svg" alt="GitHub repository" width={40} height={40} />
             </Link>
           )}
         </div>

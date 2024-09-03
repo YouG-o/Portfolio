@@ -1,5 +1,4 @@
-'use client';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -7,18 +6,17 @@ interface SliderProps {
     pictures: string[];
 }
 
-//Display a slider with navigation buttons, keyboard navigation and index information
 const Slider: React.FC<SliderProps> = ({ pictures }) => {
     const [sliderIndex, setSliderIndex] = useState(1);
     const picturesLength = pictures.length;
 
-    function prevImage() {
-        setSliderIndex((prev) => (prev <= 1 ? picturesLength : --prev));
-    }
+    const prevImage = useCallback(() => {
+        setSliderIndex((prev) => (prev <= 1 ? picturesLength : prev - 1));
+    }, [picturesLength]);
 
-    function nextImage() {
-        setSliderIndex((next) => (next >= picturesLength ? 1 : ++next));
-    }
+    const nextImage = useCallback(() => {
+        setSliderIndex((next) => (next >= picturesLength ? 1 : next + 1));
+    }, [picturesLength]);
 
     // Add keyboard event listeners for left and right arrow keys
     useEffect(() => {
@@ -40,8 +38,7 @@ const Slider: React.FC<SliderProps> = ({ pictures }) => {
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [prevImage, nextImage]);
 
     // Reset slider index when pictures change
     useEffect(() => {
