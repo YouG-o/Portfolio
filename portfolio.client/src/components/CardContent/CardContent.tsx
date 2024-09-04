@@ -3,14 +3,14 @@ import Image from 'next/image';
 import { CiLink } from 'react-icons/ci';
 
 import { Projects } from '../../types/Projects';
-import { About } from '../../types/About';
+import { WhoAmI, Training, Contact } from '../../types/About';
 import Slider from '../Slider/Slider';
 
 interface CardContentProps {
-  card: Projects | About;
+  card: Projects | WhoAmI | Training | Contact;
 }
 
-function isProject(card: Projects | About): card is Projects {
+function isProject(card: Projects | WhoAmI | Training | Contact): card is Projects {
   return (card as Projects).stack !== undefined;
 }
 

@@ -4,11 +4,11 @@ import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import data from '@/src/data/about.json';
-import { About } from '../../types/About';
+import { WhoAmI, Training, Contact } from '../../types/About';
 import Card from '@/src/components/Card/Card';
 import CardContent from '@/src/components/CardContent/CardContent';
 
-const aboutData = data as About[];
+const aboutData = data as WhoAmI[] | Training[] | Contact[];
 
 const AboutComponent = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);

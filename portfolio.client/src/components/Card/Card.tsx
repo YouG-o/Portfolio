@@ -3,10 +3,10 @@
 import Image from 'next/image';
 
 import { Projects } from '../../types/Projects';
-import { About } from '../../types/About';
+import { WhoAmI, Training, Contact } from '../../types/About';
 
 interface CardProps {
-  card: Projects | About;
+  card: Projects | WhoAmI | Training | Contact;
   isSelected: boolean;
   onClick: () => void;
   disableHover: boolean;
