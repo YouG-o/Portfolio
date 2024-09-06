@@ -10,7 +10,7 @@ interface ProjectCardContentProps {
 
 const ProjectCardContent: React.FC<ProjectCardContentProps> = ({ card }) => {
   return (
-    <div className='divBoss flex p-3 min-h-max h-full relative'>
+    <div className='flex p-3 min-h-max h-full relative'>
       <div className='flex flex-col w-1/2 justify-between'>
         <div className='flex flex-col gap-1'>
           <p className="text-lg">{card.description}</p>
@@ -28,7 +28,7 @@ const ProjectCardContent: React.FC<ProjectCardContentProps> = ({ card }) => {
           )}
           {card.repository && (
             <Link href={card.repository} target="_blank">
-              <Image src="/images/skillicons/github.svg" alt="GitHub repository" width={40} height={40} />
+              <Image src="/images/skillicons/github.svg" alt="GitHub repository" title='GitHub repository' width={40} height={40} />
             </Link>
           )}
         </div>
@@ -38,7 +38,7 @@ const ProjectCardContent: React.FC<ProjectCardContentProps> = ({ card }) => {
       </div>
       {card.deploymentUrl && (
         <Link href={card.deploymentUrl} target="_blank" className='absolute bottom-3 right-3 text-blue-500'>
-          <CiLink size={40} />
+          <CiLink size={40} title="Deployment Link" />
         </Link>
       )}
     </div>

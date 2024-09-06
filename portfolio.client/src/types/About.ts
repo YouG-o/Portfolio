@@ -3,8 +3,15 @@ export interface WhoAmI {
     id: number;
     name: string;
     icon: string;
-    description: string;
-    pictures?: string[];
+    introduction: string;
+    hobbies: string;
+    myStack: {
+        languages: string[];
+        frontEnd: string[];
+        backEnd: string[];
+        dataBases: string[];
+        tools: string[];
+    };
 }
 
 export interface Training {
@@ -13,7 +20,6 @@ export interface Training {
     name: string;
     icon: string;
     description: string;
-    pictures?: string[];
 }
 
 export interface Contact {
@@ -21,6 +27,4 @@ export interface Contact {
     id: number;
     name: string;
     icon: string;
-    description: string;
-    pictures?: string[];
 }
