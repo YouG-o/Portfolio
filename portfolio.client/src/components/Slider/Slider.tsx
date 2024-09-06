@@ -46,7 +46,7 @@ const Slider: React.FC<SliderProps> = ({ pictures }) => {
     }, [pictures]);
 
     return (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center">
             <div className="slider relative m-8 p-6">
                 <Image
                     src={pictures[sliderIndex - 1]}
