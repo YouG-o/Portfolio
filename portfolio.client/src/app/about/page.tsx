@@ -8,7 +8,23 @@ import { WhoAmI, Training, Contact } from '../../types/About';
 import Card from '@/src/components/Card/Card';
 import CardContent from '@/src/components/CardContent/CardContent';
 
-const aboutData = data as WhoAmI[] | Training[] | Contact[];
+// Type guards
+function isWhoAmI(obj: any): obj is WhoAmI {
+  return obj.type === 'whoami';
+}
+
+function isTraining(obj: any): obj is Training {
+  return obj.type === 'training';
+}
+
+function isContact(obj: any): obj is Contact {
+  return obj.type === 'contact';
+}
+
+// Filter and assert types
+const aboutData = (data as any[]).filter((item): item is WhoAmI | Training | Contact => {
+  return isWhoAmI(item) || isTraining(item) || isContact(item);
+});
 
 const AboutComponent = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);

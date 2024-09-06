@@ -1,4 +1,5 @@
 export interface WhoAmI {
+    type: 'whoami';
     id: number;
     name: string;
     icon: string;
@@ -7,6 +8,7 @@ export interface WhoAmI {
 }
 
 export interface Training {
+    type: 'training';
     id: number;
     name: string;
     icon: string;
@@ -15,6 +17,7 @@ export interface Training {
 }
 
 export interface Contact {
+    type: 'contact';
     id: number;
     name: string;
     icon: string;
