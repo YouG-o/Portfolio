@@ -26,10 +26,10 @@ const AboutCardContent: React.FC<GenericCardContentProps> = ({ card }) => {
     switch (card.type) {
       case 'whoami':
         return (
-          <div className='flex'>
+          <div className='flex '>
             <div className='flex-1 mr-20 flex flex-col gap-10'>
-              <p className="text-lg">{card.introduction}</p>
-              <p className="text-lg">{card.hobbies}</p>
+              <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.introduction.replace(/\n/g, '<br />') }} />
+              <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.hobbies.replace(/\n/g, '<br />') }} />
             </div>
             <div className='flex-1 flex flex-col gap-2'>
               <p className="text-lg">Les technologies avec lesquelles j&apos;ai déjà travaillé :</p>
@@ -63,7 +63,7 @@ const AboutCardContent: React.FC<GenericCardContentProps> = ({ card }) => {
   return (
     <div className='flex p-3 min-h-max h-full relative'>
       <div className='flex flex-col w-full justify-between'>
-        <div className='flex flex-col gap-1'>
+        <div className='flex flex-col gap-1 min-h-max h-full items-center justify-center'>
           {renderContent()}
         </div>
       </div>
