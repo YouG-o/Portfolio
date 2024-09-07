@@ -2,11 +2,11 @@
 'use client';
 import Image from 'next/image';
 
-import { Projects } from '../../types/Projects';
+import { Project } from '../../types/Project';
 import { WhoAmI, Training, Contact } from '../../types/About';
 
 interface CardProps {
-  card: Projects | WhoAmI | Training | Contact;
+  card: Project | WhoAmI | Training | Contact;
   isSelected: boolean;
   onClick: () => void;
   disableHover: boolean;

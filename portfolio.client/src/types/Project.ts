@@ -1,8 +1,9 @@
 
-export interface Projects {
-    id: number;
+export interface Project {
+    _id: string;
+    customId: number;
     name: string;
-    isFictional: boolean;
+    isFictional?: boolean;
     icon: string;
     description: string;
     problems?: string;

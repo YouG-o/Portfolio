@@ -1,14 +1,14 @@
-import { Projects } from '../../types/Projects';
+import { Project } from '../../types/Project';
 import { WhoAmI, Training, Contact } from '../../types/About';
 import ProjectCardContent from './ProjectCardContent';
 import AboutCardContent from './AboutCardContent';
 
 interface CardContentProps {
-  card: Projects | WhoAmI | Training | Contact;
+  card: Project | WhoAmI | Training | Contact;
 }
 
-function isProject(card: Projects | WhoAmI | Training | Contact): card is Projects {
-  return (card as Projects).stack !== undefined;
+function isProject(card: Project | WhoAmI | Training | Contact): card is Project {
+  return (card as Project).stack !== undefined;
 }
 
 const CardContent: React.FC<CardContentProps> = ({ card }) => {

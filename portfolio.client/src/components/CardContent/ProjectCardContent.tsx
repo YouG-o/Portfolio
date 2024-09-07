@@ -2,10 +2,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { CiLink } from 'react-icons/ci';
 import Slider from '../Slider/Slider';
-import { Projects } from '../../types/Projects';
+import { Project } from '../../types/Project';
 
 interface ProjectCardContentProps {
-  card: Projects;
+  card: Project;
 }
 
 const ProjectCardContent: React.FC<ProjectCardContentProps> = ({ card }) => {

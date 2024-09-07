@@ -1,4 +1,3 @@
-
 'use client';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -31,15 +30,17 @@ const Projects = () => {
   return (
     <div className="min-h-full h-full py-11 border-3 border-red-500 flex flex-col">
       <section className='flex gap-4'>
-        {projects.map((card, index) => (
-          <Card
-            key={index}
-            card={card}
-            isSelected={selectedCardIndex === index}
-            onClick={() => handleCardClick(index)}
-            disableHover={selectedCardIndex !== null}
-          />
-        ))}
+        {projects
+          .sort((a: { customId: number }, b: { customId: number }) => a.customId - b.customId)
+          .map((card, index) => (
+            <Card
+              key={index}
+              card={card}
+              isSelected={selectedCardIndex === index}
+              onClick={() => handleCardClick(index)}
+              disableHover={selectedCardIndex !== null}
+            />
+          ))}
       </section>
       <AnimatePresence>
         {selectedCardIndex !== null && (
