@@ -1,8 +1,10 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "@/src/Sass/globals.scss";
 import Header from "@/src/components/Layout/Header/Header";
+import Footer from "@/src/components/Layout/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +28,7 @@ export default function RootLayout({
         <div className="wave"></div>
         <div className="wave"></div>
         <div className="wave"></div>
+        <Footer />
       </body>
     </html>
   );

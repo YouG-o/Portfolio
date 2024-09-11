@@ -1,5 +1,5 @@
-'use client';
 
+'use client';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { IoSettingsOutline } from 'react-icons/io5';
@@ -7,6 +7,7 @@ import { IoMdInformationCircleOutline } from "react-icons/io";
 import Link from 'next/link';
 
 import HeaderModal from '@/src/components/HeaderModal/HeaderModal';
+import Footer from '../Footer/Footer';
 
 import FranceFlag from "@/public/icons/France_Flag.svg";
 import UKFlag from "@/public/icons/UK_Flag.svg";
@@ -73,8 +74,12 @@ const Header = () => {
               className="h-6 w-6 cursor-pointer"
               onClick={toggleInfoModal}
             />
-            <HeaderModal isOpen={isInfoModalOpen} onClose={() => setIsInfoModalOpen(false)} className="top-8 left-1/2 transform -translate-x-1/2">
-              <p>Info Modal</p>
+            <HeaderModal
+              isOpen={isInfoModalOpen}
+              onClose={() => setIsInfoModalOpen(false)}
+              className="top-8 left-1/2 transform -translate-x-1/2 max-w-[90vw] w-auto"
+            >
+              <Footer as="div" className="whitespace-nowrap overflow-x-auto visible" />
             </HeaderModal>
           </div>
           <span>{time}</span>
