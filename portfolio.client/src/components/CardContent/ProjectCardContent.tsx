@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { CiLink } from 'react-icons/ci';
 import Slider from '../Slider/Slider';
 import { Project } from '../../types/Project';
+import SkillIcons from '../SkillIcons/SkillIcons';
 
 interface ProjectCardContentProps {
   card: Project;
@@ -20,11 +21,7 @@ const ProjectCardContent: React.FC<ProjectCardContentProps> = ({ card }) => {
         </div>
         <div className='flex justify-between'>
           {card.stack && (
-            <div className="stack-icons flex gap-2">
-              {card.stack.map((tech) => (
-                <Image key={tech} src={`/images/skillicons/${tech}.svg`} title={tech} alt={tech} width={40} height={40} />
-              ))}
-            </div>
+            <SkillIcons techList={card.stack} iconSize={40} />
           )}
           {card.repository && (
             <Link href={card.repository} target="_blank">

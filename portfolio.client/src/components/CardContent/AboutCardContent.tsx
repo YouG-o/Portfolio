@@ -1,28 +1,12 @@
 import Image from 'next/image';
 import { WhoAmI, Training, Contact } from '../../types/About';
+import SkillIcons from '../SkillIcons/SkillIcons';
 
 interface GenericCardContentProps {
   card: WhoAmI | Training | Contact;
 }
 
 const AboutCardContent: React.FC<GenericCardContentProps> = ({ card }) => {
-  interface TechCategoryProps {
-    title?: string;
-    techList: string[];
-    iconSize: number;
-  }
-
-  const TechCategory: React.FC<TechCategoryProps> = ({ title, techList, iconSize }) => (
-    <div>
-      {title && <p>{title} :</p>}
-      <div className="stack-icons flex gap-2">
-        {techList.map((tech) => (
-          <Image key={tech} src={`/images/skillicons/${tech}.svg`} title={tech} alt={tech} width={iconSize} height={iconSize} />
-        ))}
-      </div>
-    </div>
-  );
-
   const renderContent = () => {
     switch (card.type) {
       case 'whoami':
@@ -35,11 +19,11 @@ const AboutCardContent: React.FC<GenericCardContentProps> = ({ card }) => {
             <div className='flex-1 flex flex-col gap-2'>
               <p className="text-lg">Les technologies avec lesquelles j&apos;ai déjà travaillé :</p>
               <div className='ml-2'>
-                <TechCategory title="Langages" techList={card.myStack.languages} iconSize={40} />
-                <TechCategory title="Front-End" techList={card.myStack.frontEnd} iconSize={40} />
-                <TechCategory title="Back-End" techList={card.myStack.backEnd} iconSize={40} />
-                <TechCategory title="Base de données" techList={card.myStack.dataBases} iconSize={40} />
-                <TechCategory title="Outils et autres" techList={card.myStack.tools} iconSize={40} />
+                <SkillIcons title="Langages" techList={card.myStack.languages} iconSize={40} />
+                <SkillIcons title="Front-End" techList={card.myStack.frontEnd} iconSize={40} />
+                <SkillIcons title="Back-End" techList={card.myStack.backEnd} iconSize={40} />
+                <SkillIcons title="Base de données" techList={card.myStack.dataBases} iconSize={40} />
+                <SkillIcons title="Outils et autres" techList={card.myStack.tools} iconSize={40} />
               </div>
             </div>
           </div>
@@ -53,10 +37,11 @@ const AboutCardContent: React.FC<GenericCardContentProps> = ({ card }) => {
                 <div className='flex gap-2'>
                   {training.schoolIcon && (
                     <Image src={training.schoolIcon} alt={training.school} width={25} height={25} />
-                  )}                  <p className="">{training.date} : {training.length}</p>
+                  )}
+                  <p className="">{training.date} : {training.length}</p>
                 </div>
                 <p className="text-lg">{training.description}</p>
-                <TechCategory techList={training.skills} iconSize={30} />
+                <SkillIcons techList={training.skills} iconSize={30} />
               </div>
             ))}
           </>
