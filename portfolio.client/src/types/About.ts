@@ -14,12 +14,25 @@ export interface WhoAmI {
     };
 }
 
+export interface TrainingDetails {
+    title: string;
+    degree: string;
+    school: string;
+    schoolIcon?: string;
+    location: string;
+    date: string;
+    length: string;
+    description: string;
+    skills: string[];
+    link?: string;
+}
+
 export interface Training {
     type: 'training';
     id: number;
     name: string;
     icon: string;
-    description: string;
+    trainings: TrainingDetails[];
 }
 
 export interface Contact {
