@@ -1,3 +1,4 @@
+
 import { Project } from '../../types/Project';
 import { WhoAmI, Training, Contact } from '../../types/About';
 import ProjectCardContent from './Projects/ProjectCardContent';

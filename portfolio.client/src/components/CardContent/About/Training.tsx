@@ -9,7 +9,7 @@ interface TrainingCardProps {
 
 const TrainingCard: React.FC<TrainingCardProps> = ({ card }) => {
   return (
-    <>
+    <div className='m-4 flex flex-col justify-center'>
       {card.trainings.map((training, index) => (
         <div className='flex flex-col gap-2' key={index}>
           <p className="text-xl font-semibold">{training.title}</p>
@@ -23,7 +23,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({ card }) => {
           <SkillIcons techList={training.skills} iconSize={30} />
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

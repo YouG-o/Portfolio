@@ -1,4 +1,4 @@
-import React from 'react';
+
 import SkillIcons from '@/src/components/SkillIcons/SkillIcons';
 import { WhoAmI } from '@/src/types/About';
 
@@ -8,12 +8,12 @@ interface WhoAmICardProps {
 
 const WhoAmICard: React.FC<WhoAmICardProps> = ({ card }) => {
   return (
-    <div className='flex '>
-      <div className='flex-1 mr-20 flex flex-col gap-10'>
+    <div className='flex h-full ml-5'>
+      <div className='flex-1 mr-20 flex flex-col gap-10 justify-center'>
         <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.introduction.replace(/\n/g, '<br />') }} />
         <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.hobbies.replace(/\n/g, '<br />') }} />
       </div>
-      <div className='flex-1 flex flex-col gap-2'>
+      <div className='flex-1 flex flex-col gap-2 justify-center'>
         <p className="text-lg">Les technologies avec lesquelles j&apos;ai déjà travaillé :</p>
         <div className='ml-2'>
           <SkillIcons title="Langages" techList={card.myStack.languages} iconSize={40} />

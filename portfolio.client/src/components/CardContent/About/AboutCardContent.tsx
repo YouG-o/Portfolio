@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { WhoAmI, Training, Contact } from '@/src/types/About';
 import WhoAmICard from './WhoAmI';
 import TrainingCard from './Training';
@@ -24,11 +24,7 @@ const AboutCardContent: React.FC<GenericCardContentProps> = ({ card }) => {
 
   return (
     <div className='flex p-3 min-h-max h-full relative'>
-      <div className='flex flex-col w-full justify-between'>
-        <div className='flex flex-col gap-1 min-h-max h-full items-center justify-center'>
           {renderContent()}
-        </div>
-      </div>
     </div>
   );
 };
