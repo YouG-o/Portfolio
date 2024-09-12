@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { CiLink } from 'react-icons/ci';
-import Slider from '../Slider/Slider';
-import { Project } from '../../types/Project';
-import SkillIcons from '../SkillIcons/SkillIcons';
+import Slider from '@/src/components/Slider/Slider';
+import { Project } from '@/src/types/Project';
+import SkillIcons from '@/src/components/SkillIcons/SkillIcons';
 
 interface ProjectCardContentProps {
   card: Project;

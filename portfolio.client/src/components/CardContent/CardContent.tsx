@@ -1,7 +1,7 @@
 import { Project } from '../../types/Project';
 import { WhoAmI, Training, Contact } from '../../types/About';
-import ProjectCardContent from './ProjectCardContent';
-import AboutCardContent from './AboutCardContent';
+import ProjectCardContent from './Projects/ProjectCardContent';
+import AboutCardContent from './About/AboutCardContent';
 
 interface CardContentProps {
   card: Project | WhoAmI | Training | Contact;
