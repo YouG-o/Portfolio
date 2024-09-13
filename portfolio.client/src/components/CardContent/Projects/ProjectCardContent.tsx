@@ -19,8 +19,6 @@ const ProjectCardContent: React.FC<ProjectCardContentProps> = ({ card }) => {
           <div className='flex-1 flex flex-col p-3 box-border justify-center overflow-hidden'>
             <div className='flex flex-col gap-1 overflow-y-auto'>
               <p className="text-lg">{card.description}</p>
-              <p className="text-lg">{card.description}</p>
-              <p className="text-lg">{card.description}</p>
               {card.problems && (
                 <p className="text-lg">{card.problems}</p>
               )}
