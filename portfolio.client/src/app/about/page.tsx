@@ -1,35 +1,33 @@
+
 'use client';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import data from '@/src/data/about.json';
 import { WhoAmI, Training, Contact } from '../../types/About';
 import Card from '@/src/components/Card/Card';
 import CardContent from '@/src/components/CardContent/CardContent';
+import { getAbout } from '@/src/utils/api';
 
-// Type guards
-function isWhoAmI(obj: any): obj is WhoAmI {
-  return obj.type === 'whoami';
-}
 
-function isTraining(obj: any): obj is Training {
-  return obj.type === 'training';
-}
-
-function isContact(obj: any): obj is Contact {
-  return obj.type === 'contact';
-}
-
-// Filter and assert types
-const aboutData = (data as any[]).filter((item): item is WhoAmI | Training | Contact => {
-  return isWhoAmI(item) || isTraining(item) || isContact(item);
-});
-
-const AboutComponent = () => {
+const About = () => {
+  const [aboutData, setAboutData] = useState<(WhoAmI | Training | Contact)[]>([]);
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
   const searchParams = useSearchParams();
   const openCard = searchParams.get('Card');
+
+  useEffect(() => {
+    const fetchAbout = async () => {
+      try {
+        const data = await getAbout();
+        setAboutData(data);
+      } catch (error) {
+        console.error('Error fetching about data:', error);
+      }
+    };
+
+    fetchAbout();
+  }, []);
 
   useEffect(() => {
     if (openCard !== null) {
@@ -71,4 +69,4 @@ const AboutComponent = () => {
   );
 };
 
-export default AboutComponent;
+export default About;

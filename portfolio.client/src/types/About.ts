@@ -1,6 +1,7 @@
 export interface WhoAmI {
+    _id: string;
     type: 'whoami';
-    _id: number;
+    id: number;
     name: string;
     icon: string;
     introduction: string;
@@ -28,16 +29,18 @@ export interface TrainingDetails {
 }
 
 export interface Training {
+    _id: string;
     type: 'training';
-    _id: number;
+    id: number;
     name: string;
     icon: string;
     trainings: TrainingDetails[];
 }
 
 export interface Contact {
+    _id: string;
     type: 'contact';
-    _id: number;
+    id: number;
     name: string;
     icon: string;
 }

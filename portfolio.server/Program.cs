@@ -5,10 +5,9 @@ using MongoDB.Driver;
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuration of services for MongoDB
-builder.Services.Configure<MongoDbSettings>(
-    builder.Configuration.GetSection("MongoDbSettings"));
+builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
 
-builder.Services.AddSingleton<IMongoClient, MongoClient>(sp =>
+builder.Services.AddSingleton<IMongoClient>(sp =>
 {
     var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
     return new MongoClient(settings.ConnectionURI);
@@ -28,6 +27,13 @@ builder.Services.AddSingleton<IMongoCollection<Project>>(sp =>
     return database.GetCollection<Project>(settings.ProjectsCollectionName);
 });
 
+builder.Services.AddSingleton<IMongoCollection<About>>(sp =>
+{
+    var database = sp.GetRequiredService<IMongoDatabase>();
+    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
+    return database.GetCollection<About>(settings.AboutCollectionName);
+});
+
 // Add CORS to allow requests from the front-end
 builder.Services.AddCors(options =>
 {
@@ -43,47 +49,35 @@ var app = builder.Build();
 
 app.UseCors("AllowFrontend");
 
-// Add other middlewares like UseHttpsRedirection, etc.
 app.UseHttpsRedirection();
 
-// Route configuration (Minimal API)
+// Routes configuration (Minimal API)
 app.MapGet("/api/projects", async (IMongoCollection<Project> collection) =>
 {
-    var projects = await collection.Find(_ => true).ToListAsync();
-    return Results.Ok(projects);
+    try
+    {
+        var projects = await collection.Find(_ => true).ToListAsync();
+        return Results.Ok(projects);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error retrieving projects: {ex.Message}");
+        return Results.Problem("An error occurred while retrieving projects.");
+    }
 });
 
-app.MapGet("/api/projects/{id}", async (IMongoCollection<Project> collection, string id) =>
+app.MapGet("/api/about", async (IMongoCollection<About> collection) =>
 {
-    var project = await collection.Find(p => p.Id == id).FirstOrDefaultAsync();
-    if (project is null)
-        return Results.NotFound();
-
-    return Results.Ok(project);
+    try
+    {
+        var about = await collection.Find(_ => true).ToListAsync();
+        return Results.Ok(about);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error retrieving about information: {ex.Message}");
+        return Results.Problem("An error occurred while retrieving about information.");
+    }
 });
-
-// app.MapPost("/api/projects", async (IMongoCollection<Project> collection, Project project) =>
-// {
-//     await collection.InsertOneAsync(project);
-//     return Results.Created($"/api/projects/{project.Id}", project);
-// });
-
-// app.MapPut("/api/projects/{id}", async (IMongoCollection<Project> collection, string id, Project updatedProject) =>
-// {
-//     var result = await collection.ReplaceOneAsync(p => p.Id == id, updatedProject);
-//     if (result.MatchedCount == 0)
-//         return Results.NotFound();
-
-//     return Results.NoContent();
-// });
-
-// app.MapDelete("/api/projects/{id}", async (IMongoCollection<Project> collection, string id) =>
-// {
-//     var result = await collection.DeleteOneAsync(p => p.Id == id);
-//     if (result.DeletedCount == 0)
-//         return Results.NotFound();
-
-//     return Results.NoContent();
-// });
 
 app.Run();

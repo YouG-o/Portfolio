@@ -1,7 +1,10 @@
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const BASE_API_URL = `${API_URL}/api`;
+
 const PROJECTS_URL = `${BASE_API_URL}/projects`;
+const ABOUT_URL = `${BASE_API_URL}/about`;
 
 export const getProjects = async () => {
   const response = await fetch(PROJECTS_URL);
@@ -11,13 +14,22 @@ export const getProjects = async () => {
   return await response.json();
 };
 
-export const getProjectById = async (id: string) => {
-  const response = await fetch(`${PROJECTS_URL}/${id}`);
+
+export const getAbout = async () => {
+  const response = await fetch(ABOUT_URL);
   if (!response.ok) {
-    throw new Error(`Failed to fetch project with id: ${id}`);
+    throw new Error('Failed to fetch about data');
   }
   return await response.json();
 };
+
+// export const getProjectById = async (id: string) => {
+//   const response = await fetch(`${PROJECTS_URL}/${id}`);
+//   if (!response.ok) {
+//     throw new Error(`Failed to fetch project with id: ${id}`);
+//   }
+//   return await response.json();
+// };
 
 // export const addProject = async (project: any) => {
 //   const response = await fetch(PROJECTS_URL, {

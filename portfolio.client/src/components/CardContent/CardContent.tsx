@@ -1,4 +1,3 @@
-
 import { Project } from '../../types/Project';
 import { WhoAmI, Training, Contact } from '../../types/About';
 import ProjectCardContent from './Projects/ProjectCardContent';
@@ -13,6 +12,10 @@ function isProject(card: Project | WhoAmI | Training | Contact): card is Project
 }
 
 const CardContent: React.FC<CardContentProps> = ({ card }) => {
+  if (!card) {
+    return null;
+  }
+
   return isProject(card) ? <ProjectCardContent card={card} /> : <AboutCardContent card={card} />;
 };
 
