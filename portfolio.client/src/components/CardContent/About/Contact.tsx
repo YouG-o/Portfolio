@@ -1,22 +1,17 @@
 
 'use client'
-import { useState } from 'react';
 
 import { Contact } from "@/src/types/About";
-import ContactIcons from "../../ContactIcons/ContactIcons";
+import ContactIcons from "@/src/components/ContactIcons/ContactIcons";
+import ContactForm from "@/src/components/ContactForm/ContactForm";
 
 interface ContactCardProps {
   card: Contact;
 }
 
 const ContactCard: React.FC<ContactCardProps> = ({ card }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log({ name, email, message });
+  const handleFormSubmit = (data: { name: string; email: string; message: string }) => {
+    console.log(data);
   };
 
   return (
@@ -30,31 +25,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ card }) => {
         <p className="text-xl">Je serai ravi d&rsquo;échanger avec vous.</p>
       </div>
       <div className='flex-1 flex flex-col gap-2 justify-center'>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-2/3 mx-auto">
-          <input
-            type="text"
-            placeholder="Nom"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="p-2 border border-gray-300 rounded"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="p-2 border border-gray-300 rounded"
-          />
-          <textarea
-            placeholder="Message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            className="p-2 border border-gray-300 rounded"
-          />
-          <button type="submit" className="p-2 bg-blue-500 text-white rounded">
-            Envoyer
-          </button>
-        </form>
+        <ContactForm onSubmit={handleFormSubmit} />
       </div>
     </div>
   );
