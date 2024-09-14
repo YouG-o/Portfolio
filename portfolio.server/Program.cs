@@ -34,6 +34,14 @@ builder.Services.AddSingleton<IMongoCollection<About>>(sp =>
     return database.GetCollection<About>(settings.AboutCollectionName);
 });
 
+builder.Services.AddSingleton<IMongoCollection<ContactMessage>>(sp =>
+{
+    var database = sp.GetRequiredService<IMongoDatabase>();
+    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
+    return database.GetCollection<ContactMessage>(settings.ContactCollectionName);
+});
+
+
 // Add CORS to allow requests from the front-end
 builder.Services.AddCors(options =>
 {
@@ -79,5 +87,28 @@ app.MapGet("/api/about", async (IMongoCollection<About> collection) =>
         return Results.Problem("An error occurred while retrieving about information.");
     }
 });
+
+app.MapPost("/api/contact", async (IMongoCollection<ContactMessage> collection, ContactFormDto contactFormDto) =>
+{
+    try
+    {
+        var contactMessage = new ContactMessage
+        {
+            Name = contactFormDto.Name,
+            Email = contactFormDto.Email,
+            Message = contactFormDto.Message,
+            DateSent = DateTime.UtcNow
+        };
+
+        await collection.InsertOneAsync(contactMessage);
+        return Results.Ok("Message received.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error processing contact form: {ex.Message}");
+        return Results.Problem("An error occurred while processing your message.");
+    }
+});
+
 
 app.Run();
