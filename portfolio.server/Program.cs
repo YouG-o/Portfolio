@@ -4,7 +4,7 @@ using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuration of services for MongoDB
+// MongoDB Configuration
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
 
 builder.Services.AddSingleton<IMongoClient>(sp =>
@@ -47,7 +47,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins(Environment.GetEnvironmentVariable("FRONTEND_URL")) // Front URL
+        policy.WithOrigins(Environment.GetEnvironmentVariable("FRONTEND_URL") ?? "http://localhost:3000") // Front URL
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
