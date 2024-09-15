@@ -30,7 +30,7 @@ const ProjectCardContent: React.FC<ProjectCardContentProps> = ({ card }) => {
             )}
             {card.repository && (
               <Link href={card.repository} target="_blank">
-                <Image src="/images/skillicons/github.svg" alt="GitHub repository" title='GitHub repository' width={40} height={40} />
+                <Image src="/images/skillicons/GitHub.svg" alt="GitHub repository" title='GitHub repository' width={40} height={40} />
               </Link>
             )}
           </div>

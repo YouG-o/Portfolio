@@ -10,7 +10,7 @@ builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("Mo
 builder.Services.AddSingleton<IMongoClient>(sp =>
 {
     var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
-    return new MongoClient(settings.ConnectionURI);
+    return new MongoClient(Environment.GetEnvironmentVariable("MONGODB_URI") ?? settings.ConnectionURI);
 });
 
 builder.Services.AddSingleton<IMongoDatabase>(sp =>
@@ -47,7 +47,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000") // Front URL
+        policy.WithOrigins(Environment.GetEnvironmentVariable("FRONTEND_URL")) // Front URL
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
