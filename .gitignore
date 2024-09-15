@@ -62,3 +62,4 @@ portfolio.server/*.csproj.user
 portfolio.server/*.dbmdl
 portfolio.server/*.bak
 portfolio.server/*.tmp
+portfolio.server/publish

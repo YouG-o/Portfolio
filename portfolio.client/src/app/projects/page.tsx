@@ -49,7 +49,7 @@ const Projects = () => {
             animate={{ width: '100%', height: '100%', opacity: 1 }}
             exit={{ width: 0, height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden bg-white flex-grow mt-4 rounded-2xl p-4"
+            className="overflow-hidden bg-white bg-opacity-70 flex-grow mt-4 rounded-2xl p-4"
           >
             <CardContent card={projects[selectedCardIndex]} />
           </motion.div>
