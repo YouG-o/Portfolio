@@ -1,4 +1,3 @@
-
 'use client'
 
 import { Contact } from "@/src/types/About";
@@ -15,7 +14,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ card }) => {
   };
 
   return (
-    <div className='flex m-5'>
+    <div className='flex m-5 w-full'>
       <div className='flex-1 flex flex-col gap-10 justify-center'>
         <p className="text-xl">
           Vous souhaitez discuter d’un projet ou en savoir plus sur mon travail ?
@@ -24,7 +23,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ card }) => {
         <ContactIcons direction="row" iconSize="text-3xl" />
         <p className="text-xl">Je serai ravi d&rsquo;échanger avec vous.</p>
       </div>
-      <div className='flex-1 flex flex-col gap-2 justify-center'>
+      <div className='flex-1 flex flex-col gap-2 justify-center items-center'>
         <ContactForm onSubmit={handleFormSubmit} />
       </div>
     </div>

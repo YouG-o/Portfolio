@@ -1,4 +1,3 @@
-
 'use client';
 import { useState } from 'react';
 
@@ -16,6 +15,12 @@ const ContactForm: React.FC<ContactFormProps> = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!name || !email || !message) {
+      setStatus('Tous les champs sont obligatoires.');
+      return;
+    }
+
     try {
       await sendContactForm({ name, email, message });
       setStatus('Message envoyé avec succès.');
@@ -49,7 +54,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
           placeholder="Message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="p-2 border border-gray-300 rounded"
+          className="p-2 border border-gray-300 rounded h-32"
         />
         <button type="submit" className="p-2 bg-blue-500 text-white rounded">
           Envoyer
