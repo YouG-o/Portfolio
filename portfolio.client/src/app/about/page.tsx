@@ -41,7 +41,7 @@ const About = () => {
 
   return (
     <div className="min-h-full h-full py-11 border-3 border-red-500 flex flex-col">
-      <section className="flex gap-4">
+      <section className="flex flex-col sm:flex-row gap-4">
         {aboutData.map((card, index) => (
           <Card
             key={index}

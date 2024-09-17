@@ -44,7 +44,7 @@ const Header = () => {
   return (
     <header className='flex text-white'>
       <nav className='flex justify-between w-full'>
-        <ul className='flex space-x-10 mx-10'>
+        <ul className='flex sm:space-x-10 sm:mx-10 mx-3 space-x-4'>
           <li>
             <Link href="/about" className={`${isActive("/about") ? 'font-bold' : ''}`}>
               A propos
@@ -56,7 +56,7 @@ const Header = () => {
             </Link>
           </li>
         </ul>
-        <div id="headerIcons" className='relative flex space-x-10'>
+        <div id="headerIcons" className='relative flex sm:space-x-10 space-x-4'>
           <div className="relative">
             <IoSettingsOutline
               className="h-6 w-6 cursor-pointer"
