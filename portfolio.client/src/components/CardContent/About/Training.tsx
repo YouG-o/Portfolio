@@ -9,9 +9,9 @@ interface TrainingCardProps {
 
 const TrainingCard: React.FC<TrainingCardProps> = ({ card }) => {
   return (
-    <div className='m-4 flex flex-col justify-center'>
+    <div className='flex flex-col h-full justify-center overflow-auto sm:overflow-y-auto'>
       {card.trainings.map((training, index) => (
-        <div className='flex flex-col gap-2' key={index}>
+        <div className='m-4 flex flex-col gap-2' key={index}>
           <p className="text-xl font-semibold">{training.title}</p>
           <div className='flex gap-2'>
             {training.schoolIcon && (

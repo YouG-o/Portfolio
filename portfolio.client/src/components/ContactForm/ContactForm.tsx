@@ -34,7 +34,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
   };
 
   return (
-    <div className="relative w-2/3 mx-auto">
+    <div className="relative w-4/5 sm:w-2/3 mx-auto">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"

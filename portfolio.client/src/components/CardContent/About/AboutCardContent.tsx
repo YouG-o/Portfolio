@@ -23,7 +23,7 @@ const AboutCardContent: React.FC<GenericCardContentProps> = ({ card }) => {
   };
 
   return (
-    <div className='flex p-3 min-h-max h-full relative'>
+    <div className='flex flex-col-reverse sm:flex-row p-3 min-h-max h-full relative'>
           {renderContent()}
     </div>
   );
