@@ -16,7 +16,7 @@ const Card: React.FC<CardProps> = ({ card, isSelected, onClick, disableHover }) 
     <div
       onClick={onClick}
       className={`${
-        isSelected ? '' : disableHover ? 'hidden sm:block' : ''
+        isSelected ? '' : disableHover ? 'hidden sm:block' : 'w-36'
       }`}
     >
       <div className={`w-36 h-36 rounded-xl border border-gray-300 p-4 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 ease-in-out ${isSelected ? 'h-48 w-48 shadow-lg' : 'hover:h-48 hover:w-48 hover:shadow-lg'}`}>

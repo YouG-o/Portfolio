@@ -8,8 +8,8 @@ interface WhoAmICardProps {
 
 const WhoAmICard: React.FC<WhoAmICardProps> = ({ card }) => {
   return (
-    <div className='flex flex-col sm:flex-row h-full ml-5  overflow-y-auto sm:overflow-y-auto sm:gap-0 gap-10'>
-      <div className='sm:flex-1 mr-20 flex flex-col gap-5 sm:gap-10 justify-center'>
+    <div className='flex flex-col sm:flex-row h-full ml-5 overflow-y-auto sm:gap-0 gap-10'>
+      <div className='sm:flex-1 sm:mr-20 flex flex-col gap-5 sm:gap-10 justify-center'>
         <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.introduction.replace(/\n/g, '<br />') }} />
         <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.hobbies.replace(/\n/g, '<br />') }} />
       </div>

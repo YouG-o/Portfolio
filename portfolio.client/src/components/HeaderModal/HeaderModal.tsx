@@ -33,7 +33,7 @@ const HeaderModal: React.FC<ModalProps> = ({ isOpen, onClose, children, classNam
   if (!isOpen) return null;
 
   return (
-    <div ref={modalRef} className={`absolute bg-white text-black p-4 rounded-lg shadow-lg ${className} overflow-x-auto`}>
+    <div ref={modalRef} className={`absolute bg-white bg-opacity-70 text-black p-4 rounded-lg shadow-lg ${className} overflow-x-auto`}>
       {children}
     </div>
   );

@@ -15,13 +15,13 @@ const ContactCard: React.FC<ContactCardProps> = ({ card }) => {
 
   return (
     <div className='flex flex-col sm:flex-row sm:m-5 w-full gap-12 sm:gap-6 overflow-y-auto sm:overflow-y-auto'>
-      <div className='sm:flex-1 flex flex-col gap-10 justify-center'>
+      <div className='sm:flex-1 flex flex-col gap-10 justify-center items-center sm:items-start'>
         <p className="text-xl">
           Vous souhaitez discuter d’un projet ou en savoir plus sur mon travail ?
           N’hésitez pas à me contacter via les plateformes suivantes :
         </p>
         <ContactIcons direction="row" iconSize="text-3xl" />
-        <p className="text-xl">Vous pouvez sinon me joindre via le formulaire de contact suivant.</p>
+        <p className="text-xl">Vous pouvez également me joindre via le formulaire le contact.</p>
       </div>
       <div className='sm:flex-1 flex flex-col gap-2 justify-center items-center'>
         <ContactForm onSubmit={handleFormSubmit} />
