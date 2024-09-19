@@ -57,11 +57,11 @@ const Slider: React.FC<SliderProps> = ({ pictures }) => {
                 />
                 {picturesLength > 1 && (
                     <>
-                        <button onClick={prevImage} className="navigation-button prev-button absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
-                            <IoIosArrowBack size={32} />
+                        <button onClick={prevImage} className="navigation-button prev-button absolute left-8 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
+                            <IoIosArrowBack size={24} />
                         </button>
-                        <button onClick={nextImage} className="navigation-button next-button absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
-                            <IoIosArrowForward size={32} />
+                        <button onClick={nextImage} className="navigation-button next-button absolute right-8 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
+                            <IoIosArrowForward size={24} />
                         </button>
                         <div className="points-container mt-2 absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
                             {pictures.map((_, index) => (
