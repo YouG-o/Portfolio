@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Resource } from 'i18next';
 
 import "@/src/Sass/globals.scss";
 import Header from "@/src/components/Layout/Header/Header";
@@ -20,7 +21,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
-  resources: object;
+  resources: Resource;
 }>) {
   const i18nNamespaces = ["Header"];
 
