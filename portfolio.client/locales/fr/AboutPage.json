@@ -10,5 +10,15 @@
         "Languages": "Langages",
         "DB": "Bases de données",
         "Tools": "Outils et autres"
+    },
+    "contactForm":
+    {
+        "name": "Nom",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Envoyer",
+        "success": "Votre message a bien été envoyé !",
+        "error": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer plus tard.",
+        "required": "Tous les champs sont obligatoires."
     }
 }

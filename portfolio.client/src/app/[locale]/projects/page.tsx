@@ -1,8 +1,9 @@
+
 'use client';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import Card from '@/src/components/Card/Card';
+import Card from '@/src/components/Card';
 import CardContent from '@/src/components/CardContent/CardContent';
 import { getProjects } from '@/src/utils/api';
 

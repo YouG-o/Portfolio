@@ -2,7 +2,8 @@ const path = require('path');
 
 export const i18nConfig = {
     locales: ['fr', 'en'],
-    defaultLocale: 'fr'
+    defaultLocale: 'fr',
+    prefixDefault: true,
 };
 
 

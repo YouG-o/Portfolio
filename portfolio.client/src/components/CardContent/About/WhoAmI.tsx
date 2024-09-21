@@ -1,5 +1,5 @@
 
-import SkillIcons from '@/src/components/SkillIcons/SkillIcons';
+import SkillIcons from '@/src/components/SkillIcons';
 import { WhoAmI } from '@/src/types/About';
 import { useTranslation } from 'react-i18next';
 

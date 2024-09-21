@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { WhoAmI, Training, Contact } from '@/src/types/About';
-import Card from '@/src/components/Card/Card';
+import Card from '@/src/components/Card';
 import CardContent from '@/src/components/CardContent/CardContent';
 import { getAbout } from '@/src/utils/api';
 

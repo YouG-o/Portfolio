@@ -1,4 +1,5 @@
-import ContactIcons from '@/src/components/ContactIcons/ContactIcons';
+
+import ContactIcons from '@/src/components/ContactIcons';
 
 interface FooterProps {
   as?: keyof JSX.IntrinsicElements;

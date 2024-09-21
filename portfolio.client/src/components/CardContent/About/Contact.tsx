@@ -1,8 +1,8 @@
 'use client'
 
 import { Contact } from "@/src/types/About";
-import ContactIcons from "@/src/components/ContactIcons/ContactIcons";
-import ContactForm from "@/src/components/ContactForm/ContactForm";
+import ContactIcons from "@/src/components/ContactIcons";
+import ContactForm from "@/src/components/ContactForm";
 import { useTranslation } from "react-i18next";
 
 interface ContactCardProps {

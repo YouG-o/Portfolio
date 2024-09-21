@@ -1,5 +1,7 @@
+
 'use client';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { sendContactForm } from '@/src/utils/api';
 
@@ -8,6 +10,8 @@ interface ContactFormProps {
 }
 
 const ContactForm: React.FC<ContactFormProps> = () => {
+  const { t } = useTranslation('AboutPage');
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -17,19 +21,19 @@ const ContactForm: React.FC<ContactFormProps> = () => {
     e.preventDefault();
     
     if (!name || !email || !message) {
-      setStatus('Tous les champs sont obligatoires.');
+      setStatus(t('contactForm.required'));
       return;
     }
 
     try {
       await sendContactForm({ name, email, message });
-      setStatus('Message envoyé avec succès.');
+      setStatus(t('contactForm.success'));
       setName('');
       setEmail('');
       setMessage('');
       setTimeout(() => setStatus(null), 3000);
     } catch (error) {
-      setStatus('Erreur lors de l\'envoi du message.');
+      setStatus(t('contactForm.error'));
     }
   };
 
@@ -38,31 +42,31 @@ const ContactForm: React.FC<ContactFormProps> = () => {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"
-          placeholder="Nom"
+          placeholder={t('contactForm.name')}
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="p-2 border border-gray-300 rounded"
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder={t('contactForm.email')}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="p-2 border border-gray-300 rounded"
         />
         <textarea
-          placeholder="Message"
+          placeholder={t('contactForm.message')}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           className="p-2 border border-gray-300 rounded h-32"
         />
         <button type="submit" className="p-2 bg-blue-500 text-white rounded">
-          Envoyer
+          {t('contactForm.submit')}
         </button>
       </form>
       <div className="relative">
         {status && (
-          <p className={`absolute w-full mt-4 text-center ${status === 'Message envoyé avec succès.' ? 'text-green-500' : 'text-red-500'}`}>
+          <p className={`absolute w-full mt-4 text-center ${status === t('contactForm.success') ? 'text-green-500' : 'text-red-500'}`}>
             {status}
           </p>
         )}

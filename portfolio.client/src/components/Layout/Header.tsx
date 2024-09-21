@@ -1,21 +1,23 @@
+
 'use client';
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { IoMdInformationCircleOutline } from "react-icons/io";
-import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
 
-import HeaderModal from '@/src/components/HeaderModal/HeaderModal';
-import Footer from '../Footer/Footer';
-
-import FranceFlag from "@/public/icons/France_Flag.svg";
-import UKFlag from "@/public/icons/UK_Flag.svg";
+import HeaderModal from '@/src/components/HeaderModal';
+import Footer from '@/src/components/Layout/Footer';
+import LanguageSwitcher from '@/src/components/LanguageSwitcher';
 
 const Header = () => {
   const { t } = useTranslation("header");
 
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const query = Object.fromEntries(searchParams.entries());
+
   const isActive = (path: string): boolean => pathname === path;
 
   const [time, setTime] = useState<string>("");
@@ -42,6 +44,7 @@ const Header = () => {
   const toggleInfoModal = () => {
     setIsInfoModalOpen(!isInfoModalOpen);
   };
+
   return (
     <header className='flex text-white'>
       <nav className='flex justify-between w-full'>
@@ -64,10 +67,7 @@ const Header = () => {
               onClick={toggleSettingsModal}
             />
             <HeaderModal isOpen={isSettingsModalOpen} onClose={() => setIsSettingsModalOpen(false)} className="top-8 left-1/2 transform -translate-x-1/2">
-              <div className='flex space-x-4'>
-                <FranceFlag className="h-6 w-6 cursor-pointer" />
-                <UKFlag className="h-6 w-6 cursor-pointer" />
-              </div>
+              <LanguageSwitcher />
             </HeaderModal>
           </div>
           <div className="relative">

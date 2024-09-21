@@ -1,5 +1,5 @@
-'use client';
 
+'use client';
 import { ReactNode } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import initTranslations from '@/src/i18n';

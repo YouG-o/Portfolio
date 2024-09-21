@@ -1,8 +1,9 @@
+
 'use client';
 import Image from 'next/image';
 
-import { Project } from '../../types/Project';
-import { WhoAmI, Training, Contact } from '../../types/About';
+import { Project } from '@/src/types/Project';
+import { WhoAmI, Training, Contact } from '@/src/types/About';
 
 interface CardProps {
   card: Project | WhoAmI | Training | Contact;

@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { CiLink } from 'react-icons/ci';
 
-import Slider from '@/src/components/Slider/Slider';
-import SkillIcons from '@/src/components/SkillIcons/SkillIcons';
+import Slider from '@/src/components/Slider';
+import SkillIcons from '@/src/components/SkillIcons';
 import { Project } from '@/src/types/Project';
 
 interface ProjectCardContentProps {

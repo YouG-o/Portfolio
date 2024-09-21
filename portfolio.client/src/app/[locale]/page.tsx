@@ -1,7 +1,7 @@
 // page.tsx
 import Image from "next/image";
 import PSLogo from "@/public/images/playstation_logo.png";
-import PageTransition from "@/src/components/PageTransition/PageTransition";
+import PageTransition from "@/src/components/PageTransition";
 import initTranslations from "@/src/i18n";
 import { PageParams } from "@/src/types/Types";
 

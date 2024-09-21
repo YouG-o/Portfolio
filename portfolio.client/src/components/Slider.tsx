@@ -1,6 +1,8 @@
+
+'use client';
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Image from "next/image";
 
 interface SliderProps {
     pictures: string[];

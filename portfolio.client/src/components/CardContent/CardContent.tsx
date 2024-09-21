@@ -1,5 +1,5 @@
 import { Project } from '../../types/Project';
-import { WhoAmI, Training, Contact } from '../../types/About';
+import { WhoAmI, Training, Contact } from '@/src/types/About';
 import ProjectCardContent from './Projects/ProjectCardContent';
 import AboutCardContent from './About/AboutCardContent';
 

@@ -1,6 +1,6 @@
 
 import Image from 'next/image';
-import SkillIcons from '@/src/components/SkillIcons/SkillIcons';
+import SkillIcons from '@/src/components/SkillIcons';
 import { Training } from '@/src/types/About';
 
 interface TrainingCardProps {
