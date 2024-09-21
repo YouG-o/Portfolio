@@ -1,0 +1,14 @@
+{
+    "contact":
+    {
+        "contactInfo": "Do you want to discuss a project or learn more about my work? Feel free to contact me through the following platforms: ",
+        "contactForm": "You can also reach me via the contact form."
+    },
+    "whoami":
+    {
+        "Skills": "I have already worked with:",
+        "Languages": "Languages",
+        "DB": "Databases",
+        "Tools": "Tools and others"
+    }
+}

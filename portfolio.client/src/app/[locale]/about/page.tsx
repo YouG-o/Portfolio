@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { WhoAmI, Training, Contact } from '../../types/About';
+import { WhoAmI, Training, Contact } from '@/src/types/About';
 import Card from '@/src/components/Card/Card';
 import CardContent from '@/src/components/CardContent/CardContent';
 import { getAbout } from '@/src/utils/api';

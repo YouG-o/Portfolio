@@ -1,10 +1,10 @@
-
 'use client';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 import HeaderModal from '@/src/components/HeaderModal/HeaderModal';
 import Footer from '../Footer/Footer';
@@ -13,6 +13,8 @@ import FranceFlag from "@/public/icons/France_Flag.svg";
 import UKFlag from "@/public/icons/UK_Flag.svg";
 
 const Header = () => {
+  const { t } = useTranslation("header");
+
   const pathname = usePathname();
   const isActive = (path: string): boolean => pathname === path;
 
@@ -40,19 +42,18 @@ const Header = () => {
   const toggleInfoModal = () => {
     setIsInfoModalOpen(!isInfoModalOpen);
   };
-
   return (
     <header className='flex text-white'>
       <nav className='flex justify-between w-full'>
         <ul className='flex sm:space-x-10 sm:mx-10 mx-3 space-x-4'>
           <li>
             <Link href="/about" className={`${isActive("/about") ? 'font-bold' : ''}`}>
-              A propos
+              {t('about')}
             </Link>
           </li>
           <li>
             <Link href="/projects" className={`${isActive("/projects") ? 'font-bold' : ''}`}>
-              Projets
+              {t('projects')}
             </Link>
           </li>
         </ul>
