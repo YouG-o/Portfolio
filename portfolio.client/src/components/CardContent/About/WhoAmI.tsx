@@ -1,6 +1,7 @@
 
 import SkillIcons from '@/src/components/SkillIcons';
 import { WhoAmI } from '@/src/types/About';
+import { Locale } from '@/src/types/Types';
 import { useTranslation } from 'react-i18next';
 
 interface WhoAmICardProps {
@@ -8,13 +9,14 @@ interface WhoAmICardProps {
 }
 
 const WhoAmICard: React.FC<WhoAmICardProps> = ({ card }) => {
-  const { t } = useTranslation("AboutPage");
+  const { i18n, t } = useTranslation("AboutPage");
+  const locale = i18n.language as Locale;
 
   return (
     <div className='flex flex-col sm:flex-row h-full ml-5 overflow-y-auto sm:gap-0 gap-10'>
       <div className='sm:flex-1 sm:mr-20 flex flex-col gap-5 sm:gap-10 justify-center'>
-        <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.introduction.replace(/\n/g, '<br />') }} />
-        <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.hobbies.replace(/\n/g, '<br />') }} />
+        <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.introduction[locale].replace(/\n/g, '<br />') }} />
+        <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.hobbies[locale].replace(/\n/g, '<br />') }} />
       </div>
       <div className='sm:flex-1 flex flex-col gap-2 justify-center'>
         <p className="text-lg"> {t("whoami.Skills")}  </p>

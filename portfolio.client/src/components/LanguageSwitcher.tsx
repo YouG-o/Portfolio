@@ -1,23 +1,36 @@
 
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
+import i18nConfig from '@/i18nConfig';
+
 import FranceFlag from "@/public/icons/France_Flag.svg";
 import UKFlag from "@/public/icons/UK_Flag.svg";
 
-const LanguageSwitcher = () => {
+export default function LanguageChanger() {
+  const { i18n } = useTranslation();
+  const currentLocale = i18n.language;
   const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const query = Object.fromEntries(searchParams.entries());
+  const currentPathname = usePathname();
 
-  const changeLanguage = (locale: string) => {
-    const segments = pathname.split('/');
-    if (segments.length > 1) {
-      segments[1] = locale;
+  const changeLanguage = (newLocale: string) => {
+    const days = 30;
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    const expires = date.toUTCString();
+    document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
+
+    if (
+      currentLocale === i18nConfig.defaultLocale &&
+      !i18nConfig.prefixDefault
+    ) {
+      router.push('/' + newLocale + currentPathname);
+    } else {
+      router.push(
+        currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
+      );
     }
-    const newPathname = segments.join('/');
-    const searchParamsString = new URLSearchParams(query).toString();
-    const newUrl = `${newPathname}?${searchParamsString}`;
-    router.push(newUrl);
+
+    router.refresh();
   };
 
   return (
@@ -32,6 +45,4 @@ const LanguageSwitcher = () => {
       />
     </div>
   );
-};
-
-export default LanguageSwitcher;
+}

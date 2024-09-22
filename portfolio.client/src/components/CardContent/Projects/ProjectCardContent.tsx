@@ -6,21 +6,26 @@ import { CiLink } from 'react-icons/ci';
 import Slider from '@/src/components/Slider';
 import SkillIcons from '@/src/components/SkillIcons';
 import { Project } from '@/src/types/Project';
+import { Locale } from '@/src/types/Types';
+import { useTranslation } from 'react-i18next';
 
 interface ProjectCardContentProps {
   card: Project;
 }
 
 const ProjectCardContent: React.FC<ProjectCardContentProps> = ({ card }) => {
+  const { i18n } = useTranslation();
+  const locale = i18n.language as Locale;
+
   return (
     <div className='flex flex-col-reverse sm:flex-row sm:p-3 h-full relative overflow-auto sm:overflow-hidden'>
       <div className='flex flex-col w-full sm:w-1/2 sm:h-full'>
         <div className='flex flex-col sm:h-full'>
           <div className='flex-1 flex flex-col p-3 box-border justify-center overflow-hidden'>
             <div className='flex flex-col gap-1 overflow-y-visible sm:overflow-y-auto'>
-              <p className="text-lg">{card.description}</p>
+              <p className="text-lg">{card.description[locale]}</p>
               {card.problems && (
-                <p className="text-lg">{card.problems}</p>
+                <p className="text-lg">{card.problems[locale]}</p>
               )}
             </div>
           </div>
