@@ -1,8 +1,9 @@
+
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Portfolio.Server.Models
-{
+{   
     public class About
     {
         [BsonId]
@@ -16,16 +17,16 @@ namespace Portfolio.Server.Models
         public int CustomId { get; set; }
 
         [BsonElement("name")]
-        public string Name { get; set; } = null!;
+        public TranslatedText Name { get; set; } = null!;
 
         [BsonElement("icon")]
         public string Icon { get; set; } = null!;
 
         [BsonElement("introduction")]
-        public string? Introduction { get; set; }
+        public TranslatedText? Introduction { get; set; }
 
         [BsonElement("hobbies")]
-        public string? Hobbies { get; set; }
+        public TranslatedText? Hobbies { get; set; }
 
         [BsonElement("myStack")]
         public MyStack? MyStack { get; set; } 
@@ -55,7 +56,7 @@ namespace Portfolio.Server.Models
     public class TrainingDetails
     {
         [BsonElement("title")]
-        public string Title { get; set; } = null!;
+        public TranslatedText Title { get; set; } = null!;
 
         [BsonElement("degree")]
         public string Degree { get; set; } = null!;
@@ -73,10 +74,10 @@ namespace Portfolio.Server.Models
         public string Date { get; set; } = null!;
 
         [BsonElement("length")]
-        public string Length { get; set; } = null!;
+        public TranslatedText Length { get; set; } = null!;
 
         [BsonElement("description")]
-        public string Description { get; set; } = null!;
+        public TranslatedText Description { get; set; } = null!;
 
         [BsonElement("skills")]
         public List<string> Skills { get; set; } = null!;

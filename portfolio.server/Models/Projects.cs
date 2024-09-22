@@ -1,9 +1,10 @@
+
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.Collections.Generic;
 
 namespace Portfolio.Server.Models
-{
+{   
     public class Project
     {
         [BsonId]
@@ -15,7 +16,7 @@ namespace Portfolio.Server.Models
         public int CustomId { get; set; }
 
         [BsonElement("name")]
-        public string Name { get; set; } = null!;
+        public TranslatedText Name { get; set; } = null!;
 
         [BsonElement("isFictional")]
         public bool IsFictional { get; set; }
@@ -24,10 +25,10 @@ namespace Portfolio.Server.Models
         public string Icon { get; set; } = null!;
 
         [BsonElement("description")]
-        public string Description { get; set; } = null!;
+        public TranslatedText Description { get; set; } = null!;
 
         [BsonElement("problems")]
-        public string? Problems { get; set; }
+        public TranslatedText? Problems { get; set; }
 
         [BsonElement("stack")]
         public List<string> Stack { get; set; } = null!;
