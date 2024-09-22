@@ -6,18 +6,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Card from '@/src/components/Card';
 import CardContent from '@/src/components/CardContent/CardContent';
 import { getProjects } from '@/src/utils/api';
+import Loader from '@/src/app/[locale]/loading';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     const fetchProjects = async () => {
+      setIsLoading(true);
       try {
         const data = await getProjects();
         setProjects(data);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching projects:', error);
+        setIsLoading(false);
       }
     };
 
@@ -27,6 +33,10 @@ const Projects = () => {
   const handleCardClick = (index: number) => {
     setSelectedCardIndex(selectedCardIndex === index ? null : index);
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="min-h-full sm:h-full py-11 border-3 border-red-500 flex flex-col">

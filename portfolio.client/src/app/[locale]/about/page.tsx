@@ -8,6 +8,7 @@ import { WhoAmI, Training, Contact } from '@/src/types/About';
 import { getAbout } from '@/src/utils/api';
 import Card from '@/src/components/Card';
 import CardContent from '@/src/components/CardContent/CardContent';
+import Loader from '@/src/app/[locale]/loading';
 
 const About = () => {
   const [aboutData, setAboutData] = useState<(WhoAmI | Training | Contact)[]>([]);
@@ -49,7 +50,7 @@ const About = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (
