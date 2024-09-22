@@ -1,4 +1,3 @@
-
 'use client';
 import { useState, useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -18,7 +17,10 @@ const Header = () => {
   const searchParams = useSearchParams();
   const query = Object.fromEntries(searchParams.entries());
 
-  const isActive = (path: string): boolean => pathname === path;
+  const isActive = (path: string): boolean => {
+    const pathWithoutLang = pathname.replace(/^\/[a-z]{2}/, '');
+    return pathWithoutLang === path;
+  };
 
   const [time, setTime] = useState<string>("");
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState<boolean>(false);
