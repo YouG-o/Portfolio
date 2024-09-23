@@ -20,29 +20,22 @@ export default function LanguageChanger() {
     document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
 
     if (
-      currentLocale === i18nConfig.defaultLocale &&
-      !i18nConfig.prefixDefault
-    ) {
+      currentLocale === i18nConfig.defaultLocale) {
       router.push('/' + newLocale + currentPathname);
     } else {
-      router.push(
-        currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
-      );
+      router.push(currentPathname.replace(`/${currentLocale}`, `/${newLocale}`));
     }
-
     router.refresh();
   };
 
   return (
     <div className="flex space-x-4">
-      <FranceFlag 
-        className="h-6 w-6 cursor-pointer" 
-        onClick={() => changeLanguage('fr')}
-      />
-      <UKFlag 
-        className="h-6 w-6 cursor-pointer" 
-        onClick={() => changeLanguage('en')}
-      />
+      <button onClick={() => changeLanguage('fr')} className="h-6 w-6 cursor-pointer overflow-hidden flex items-center justify-center">
+        <FranceFlag />
+      </button>
+      <button onClick={() => changeLanguage('en')} className="h-6 w-6 cursor-pointer overflow-hidden flex items-center justify-center">
+        <UKFlag />
+      </button>
     </div>
   );
 }
