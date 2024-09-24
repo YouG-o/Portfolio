@@ -17,16 +17,16 @@ const ContactCard: React.FC<ContactCardProps> = ({ card }) => {
 
   return (
     <div className='flex flex-col sm:flex-row sm:m-5 w-full gap-12 sm:gap-6 overflow-y-auto sm:overflow-y-auto'>
-      <div className='sm:flex-1 flex flex-col gap-10 justify-center items-center sm:items-start'>
+      <section className='sm:flex-1 flex flex-col gap-10 justify-center items-center sm:items-start'>
         <p className="text-xl">
           {t("contact.contactInfo")}
         </p>
         <ContactIcons direction="row" iconSize="text-3xl" />
         <p className="text-xl">{t("contact.contactForm")}</p>
-      </div>
-      <div className='sm:flex-1 flex flex-col gap-2 justify-center items-center'>
+      </section>
+      <section className='sm:flex-1 flex flex-col gap-2 justify-center items-center'>
         <ContactForm onSubmit={handleFormSubmit} />
-      </div>
+      </section>
     </div>
   );
 };

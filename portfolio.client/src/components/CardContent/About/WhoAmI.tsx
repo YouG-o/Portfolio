@@ -14,11 +14,11 @@ const WhoAmICard: React.FC<WhoAmICardProps> = ({ card }) => {
 
   return (
     <div className='flex flex-col sm:flex-row h-full ml-5 overflow-y-auto sm:gap-0 gap-10'>
-      <div className='sm:flex-1 sm:mr-20 flex flex-col gap-5 sm:gap-10 justify-center'>
+      <section className='sm:flex-1 sm:mr-20 flex flex-col gap-5 sm:gap-10 justify-center'>
         <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.introduction[locale].replace(/\n/g, '<br />') }} />
         <p className="text-lg" dangerouslySetInnerHTML={{ __html: card.hobbies[locale].replace(/\n/g, '<br />') }} />
-      </div>
-      <div className='sm:flex-1 flex flex-col gap-2 justify-center'>
+      </section>
+      <section className='sm:flex-1 flex flex-col gap-2 justify-center'>
         <p className="text-lg"> {t("whoami.Skills")}  </p>
         <div className='ml-2'>
           <SkillIcons title={t("whoami.Languages")} techList={card.myStack.languages} iconSize={40} />
@@ -27,7 +27,7 @@ const WhoAmICard: React.FC<WhoAmICardProps> = ({ card }) => {
           <SkillIcons title={t("whoami.DB")} techList={card.myStack.dataBases} iconSize={40} />
           <SkillIcons title={t("whoami.Tools")} techList={card.myStack.tools} iconSize={40} />
         </div>
-      </div>
+      </section>
     </div>
   );
 };

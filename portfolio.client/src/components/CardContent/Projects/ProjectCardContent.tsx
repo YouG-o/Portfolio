@@ -19,7 +19,7 @@ const ProjectCardContent: React.FC<ProjectCardContentProps> = ({ card }) => {
 
   return (
     <div className='flex flex-col-reverse sm:flex-row sm:p-3 h-full relative overflow-auto sm:overflow-hidden'>
-      <div className='flex flex-col w-full sm:w-1/2 sm:h-full'>
+      <section className='flex flex-col w-full sm:w-1/2 sm:h-full'>
         <div className='flex flex-col sm:h-full'>
           <div className='flex-1 flex flex-col p-3 box-border justify-center overflow-hidden'>
             <div className='flex flex-col gap-1 overflow-y-visible sm:overflow-y-auto'>
@@ -40,10 +40,10 @@ const ProjectCardContent: React.FC<ProjectCardContentProps> = ({ card }) => {
             )}
           </div>
         </div>
-      </div>
-      <div className='sm:w-1/2 w-full flex items-center justify-center'>
+      </section>
+      <section className='sm:w-1/2 w-full flex items-center justify-center'>
         {card.pictures && <Slider pictures={card.pictures} />}
-      </div>
+      </section>
       {card.deploymentUrl && (
         <Link href={card.deploymentUrl} target="_blank" className='sm:absolute bottom-3 right-3 text-blue-500'>
           <CiLink size={40} title="Deployment Link" />

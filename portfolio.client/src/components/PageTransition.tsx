@@ -24,7 +24,7 @@ const PageTransition = ({ children, href, duration }: PageTransitionProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
       animate={{ opacity: isExiting ? 0 : 1 }}
       transition={{ duration: 0.5 }}
       onClick={handleLinkClick}
