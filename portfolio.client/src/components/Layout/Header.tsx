@@ -18,8 +18,8 @@ const Header = () => {
   const query = Object.fromEntries(searchParams.entries());
 
   const isActive = (path: string): boolean => {
-    const pathWithoutLang = pathname.replace(/^\/[a-z]{2}/, '');
-    return pathWithoutLang === path;
+      const pathWithoutLang = pathname.replace(/^\/[a-z]{2}/, '');
+      return pathWithoutLang === path || pathname === path;
   };
 
   const [time, setTime] = useState<string>("");
