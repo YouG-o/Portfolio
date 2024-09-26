@@ -13,7 +13,6 @@ const Projects = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-
   useEffect(() => {
     const fetchProjects = async () => {
       setIsLoading(true);
