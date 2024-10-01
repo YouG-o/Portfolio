@@ -1,0 +1,10 @@
+{
+  "name": "Thomas's Portfolio",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run dev --prefix portfolio.client\" \"dotnet run --project portfolio.server\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}

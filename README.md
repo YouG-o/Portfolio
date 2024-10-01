@@ -43,3 +43,9 @@ Then, run the Front-End development server by running this command in the client
 ```bash
 npm run dev
 ```
+
+
+You can also run both at the same time by using this command in the root folder :
+```bash
+npm run start
+```
