@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 
 interface SkillIconsProps {
@@ -12,7 +11,16 @@ const SkillIcons: React.FC<SkillIconsProps> = ({ title, techList, iconSize }) =>
     {title && <p>{title} :</p>}
     <div className="stack-icons flex gap-2 flex-wrap">
       {techList.map((tech) => (
-        <Image key={tech} src={`/images/skillicons/${tech}.svg`} title={tech} alt={tech} width={iconSize} height={iconSize} />
+        <Image
+          key={tech}
+          src={`/images/skillicons/${tech}.svg`}
+          title={tech}
+          alt={tech}
+          width={iconSize}
+          height={iconSize}
+          className="object-contain"
+          style={{ width: `${iconSize}px`, height: `${iconSize}px` }}
+        />
       ))}
     </div>
   </div>
