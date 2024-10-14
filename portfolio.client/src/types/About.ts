@@ -4,7 +4,7 @@ import { Locale } from './Types';
 export interface WhoAmI {
     _id: string;
     type: 'whoami';
-    id: number;
+    customId: number;
     name: Record<string, Locale>;
     icon: string;
     introduction: Record<string, Locale>;
@@ -34,7 +34,7 @@ export interface TrainingDetails {
 export interface Training {
     _id: string;
     type: 'training';
-    id: string;
+    customId: number;
     name: Record<string, Locale>;
     icon: string;
     trainings: TrainingDetails[];
@@ -43,7 +43,7 @@ export interface Training {
 export interface Contact {
     _id: string;
     type: 'contact';
-    id: number;
+    customId: number;
     name: Record<string, Locale>;
     icon: string;
 }

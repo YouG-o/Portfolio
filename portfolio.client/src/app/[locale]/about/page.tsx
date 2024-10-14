@@ -61,15 +61,17 @@ const About = () => {
   return (
     <div className="min-h-full sm:h-full py-11 border-3 border-red-500 flex flex-col">
       <section className="flex flex-col sm:flex-row gap-4">
-        {aboutData.map((card, index) => (
-          <Card
-            key={index}
-            card={card}
-            isSelected={selectedCardIndex === index}
-            onClick={() => handleCardClick(index)}
-            disableHover={selectedCardIndex !== null}
-          />
-        ))}
+      {aboutData
+          .sort((a: { customId: number }, b: { customId: number }) => a.customId - b.customId)
+          .map((card, index) => (
+            <Card
+              key={index}
+              card={card}
+              isSelected={selectedCardIndex === index}
+              onClick={() => handleCardClick(index)}
+              disableHover={selectedCardIndex !== null}
+            />
+          ))}
       </section>
       <AnimatePresence>
         {selectedCardIndex !== null && (
