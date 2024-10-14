@@ -22,12 +22,17 @@ const About = () => {
       setIsLoading(true);
       try {
         const cachedData = localStorage.getItem('aboutData');
-        if (cachedData) {
+        const cachedDataExpiry = localStorage.getItem('aboutDataExpiry');
+        const now = new Date();
+  
+        if (cachedData && cachedDataExpiry && new Date(cachedDataExpiry) > now) {
           setAboutData(JSON.parse(cachedData));
           setIsLoading(false);
         } else {
           const data = await getAbout();
           setAboutData(data);
+          localStorage.setItem('aboutData', JSON.stringify(data));
+          localStorage.setItem('aboutDataExpiry', new Date(now.getTime() + 60 * 60 * 1000).toISOString());
           setIsLoading(false);
         }
       } catch (error) {
@@ -35,7 +40,7 @@ const About = () => {
         setIsLoading(false);
       }
     };
-
+  
     fetchAbout();
   }, []);
 

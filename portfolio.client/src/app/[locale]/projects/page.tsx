@@ -17,9 +17,20 @@ const Projects = () => {
     const fetchProjects = async () => {
       setIsLoading(true);
       try {
-        const data = await getProjects();
-        setProjects(data);
-        setIsLoading(false);
+        const cachedData = localStorage.getItem('projectsData');
+        const cachedDataExpiry = localStorage.getItem('projectsDataExpiry');
+        const now = new Date();
+
+        if (cachedData && cachedDataExpiry && new Date(cachedDataExpiry) > now) {
+          setProjects(JSON.parse(cachedData));
+          setIsLoading(false);
+        } else {
+          const data = await getProjects();
+          setProjects(data);
+          localStorage.setItem('projectsData', JSON.stringify(data));
+          localStorage.setItem('projectsDataExpiry', new Date(now.getTime() + 60 * 60 * 1000).toISOString());
+          setIsLoading(false);
+        }
       } catch (error) {
         console.error('Error fetching projects:', error);
         setIsLoading(false);
