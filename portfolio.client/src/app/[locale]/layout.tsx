@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Resource } from 'i18next';
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   description: "Mon Portfolio",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
   params: { locale },
   resources

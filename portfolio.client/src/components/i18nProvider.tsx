@@ -5,6 +5,8 @@ import { I18nextProvider } from 'react-i18next';
 import initTranslations from '@/src/i18n';
 import { createInstance, Resource } from 'i18next';
 
+const instance = createInstance();
+
 interface I18nProviderProps {
   children: ReactNode;
   locale: string;
@@ -21,7 +23,6 @@ const LanguageContext = createContext<LanguageContextProps | undefined>(undefine
 
 export const I18nProvider = ({ children, locale, namespaces, resources }: I18nProviderProps) => {
   const i18n = useMemo(() => {
-    const instance = createInstance();
     initTranslations(locale, namespaces, instance, resources);
     return instance;
   }, [locale, namespaces, resources]);
@@ -45,7 +46,7 @@ export const I18nProvider = ({ children, locale, namespaces, resources }: I18nPr
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within an i18nProvider');
+    throw new Error('useLanguage must be used within an I18nProvider');
   }
   return context;
 };
