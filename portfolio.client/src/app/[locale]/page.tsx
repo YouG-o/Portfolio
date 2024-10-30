@@ -1,17 +1,17 @@
-
 'use client';
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-
 import { getAbout } from '@/src/utils/api';
 import Image from "next/image";
 import PSLogo from "@/public/images/playstation_logo.png";
 import PageTransition from "@/src/components/PageTransition";
+import Loader from "@/src/app/[locale]/loading";
 
 const HomePage = () => {
   const router = useRouter();
-  const { t } = useTranslation('HomePage');
+  const { t, ready } = useTranslation('HomePage');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const prefetchAboutData = async () => {
@@ -23,10 +23,16 @@ const HomePage = () => {
       }
     };
 
-    prefetchAboutData();
+    if (ready) {
+      prefetchAboutData();
+      router.prefetch('/about');
+      setIsLoading(false);
+    }
+  }, [router, ready]);
 
-    router.prefetch('/about');
-  }, [router]);
+  if (isLoading || !ready) {
+    return <Loader />;
+  }
 
   return (
     <PageTransition href="/about?Card=0" duration={0}>
