@@ -1,4 +1,3 @@
-
 'use client';
 import { createContext, useContext, useState, ReactNode, useMemo } from 'react';
 import { I18nextProvider } from 'react-i18next';
@@ -23,7 +22,7 @@ const LanguageContext = createContext<LanguageContextProps | undefined>(undefine
 
 export const I18nProvider = ({ children, locale, namespaces, resources }: I18nProviderProps) => {
   const i18n = useMemo(() => {
-    initTranslations(locale, namespaces, instance, resources);
+    initTranslations(locale, namespaces, resources);
     return instance;
   }, [locale, namespaces, resources]);
 
